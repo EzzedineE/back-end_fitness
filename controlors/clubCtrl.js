@@ -32,7 +32,6 @@ exports.modifClub = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 }
 exports.deleteClub = (req, res, next) => {
-    console.log(req.params.id);
     Club.findOne({ _id: req.params.id })
         .then(Club => {
             Club.deleteOne({ _id: req.params.id })

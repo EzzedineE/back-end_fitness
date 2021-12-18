@@ -6,6 +6,7 @@ const authRoutes = require('./routes/authRoute')
 const clubRoutes = require('./routes/clubRoute')
 const userRoutes = require('./routes/userRoute')
 const blogRoutes = require('./routes/blogRoute')
+const commentaireRoutes = require('./routes/comantaireRoute')
 require('./data/connect')
 const express = require('express')
 
@@ -21,6 +22,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/club', clubRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/blog', blogRoutes);
+app.use('/api/commentaire', commentaireRoutes);
 
 
 
