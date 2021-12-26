@@ -2,6 +2,7 @@ var cors = require('cors')
 var morgan = require('morgan')
 
 require('dotenv').config()
+const emailRoutes = require('./routes/emailRoute')
 const authRoutes = require('./routes/authRoute')
 const clubRoutes = require('./routes/clubRoute')
 const userRoutes = require('./routes/userRoute')
@@ -25,6 +26,6 @@ app.use('/api/user', userRoutes);
 app.use('/api/blog', blogRoutes);
 app.use('/api/commentaire', commentaireRoutes);
 app.use('/api/Produit', produitRoutes);
-
+app.use('/api/email', emailRoutes);
 
 

@@ -8,6 +8,7 @@ exports.createClub = (req, res, next) => {
         images.push(file.filename)
     }
     const club = new Club({
+        likes: 0,
         ...req.body, images
     })
     club.save()
