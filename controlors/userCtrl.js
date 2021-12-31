@@ -50,4 +50,20 @@ exports.dislike = async (req, res, next) => {
         res.status(500).json({ message: "internal server err" });
     }
 };
+exports.club = async (req, res, next) => {
+    try {
+        console.log(req.body)
+
+        const club = await User.findByIdAndUpdate(
+            req.params.id,
+            { club: req.body.body.id, typeForfait: req.body.body.nomForfait, prixForfait: req.body.body.prixForfait, dateInscription: req.body.body.dateInscription },
+            { new: true }
+        )
+            .catch(error => res.status(400).json({ error }));
+        res.json(club)
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "internal server err" });
+    }
+};
 

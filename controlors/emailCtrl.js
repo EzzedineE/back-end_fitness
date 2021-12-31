@@ -11,6 +11,7 @@ let transporter = nodemailer.createTransport({
 });
 exports.sendtext = async (req, res, next) => {
     try {
+        console.log(req.body)
         let info = await transporter.sendMail({
             from: 'ezzedine.elechi@gmail.com',
             to: req.body.to,
@@ -20,5 +21,7 @@ exports.sendtext = async (req, res, next) => {
         res.status(200).json({ msg: 'email send' })
     } catch (error) {
         res.status(500).json(error)
+        console.log(error)
     }
 }
+

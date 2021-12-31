@@ -9,6 +9,7 @@ const clubSchema = mongoose.Schema({
     email: { type: String, required: true },
     tel: { type: Number, required: true },
     facebook: { type: String, required: true },
+    cours: [{ type: Array, required: true }],
     likes: { type: Number, required: false },
 
 }, { versionKey: false, timestamps: true });
