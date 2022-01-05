@@ -1,6 +1,10 @@
 const User = require('../modules/userModule')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
+
+
+
+
 exports.register = (req, res, next) => {
     User.findOne({ email: req.body.email })
         .then((userRes) => {
@@ -9,6 +13,7 @@ exports.register = (req, res, next) => {
                     .then(hash => {
                         const userBody = req.body
                         const user = new User({ ...userBody, password: hash })
+                        console.log(user);
                         user.save()
                             .then(() => res.status(201).json({ message: 'utilisateur cree !' }))
                             .catch(error => res.status(400).json({ error }))
@@ -22,6 +27,7 @@ exports.register = (req, res, next) => {
         .catch((err) => { res.status(500).json(err) })
 
 }
+
 exports.login = (req, res, next) => {
     User.findOne({ email: req.body.email })
         .then(user => {

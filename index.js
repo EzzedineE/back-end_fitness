@@ -10,6 +10,7 @@ const blogRoutes = require('./routes/blogRoute')
 const commentaireRoutes = require('./routes/comantaireRoute')
 const produitRoutes = require('./routes/produitRoute')
 const forfaitRoute = require('./routes/forfaitRoute')
+const courRoute = require('./routes/coursRoute')
 
 require('./data/connect')
 const express = require('express')
@@ -30,5 +31,6 @@ app.use('/api/commentaire', commentaireRoutes);
 app.use('/api/Produit', produitRoutes);
 app.use('/api/email', emailRoutes);
 app.use('/api/forfait', forfaitRoute);
+app.use('/api/cours', courRoute);
 
 
