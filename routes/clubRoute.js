@@ -10,4 +10,5 @@ router.put('/:id', upload.array("images"), club.modifClub);
 router.get('/:id', club.getOneClub);
 router.post('/payment/:id', club.payment)
 router.post('/cours/:id', club.cours)
+router.post('/forfaits/:id', club.forfaits)
 module.exports = router

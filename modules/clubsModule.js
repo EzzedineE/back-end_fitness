@@ -13,6 +13,7 @@ const clubSchema = mongoose.Schema({
     toutJour: { type: String, required: false },
     weekend: { type: String, required: false },
     cours: [{ type: Schema.Types.ObjectId, ref: 'Cours' }],
+    forfaits: [{ type: Schema.Types.ObjectId, ref: 'forfaits' }],
     likes: { type: Number, required: false },
     condidat: [{ type: String, required: false }],
     prix: [{ type: Number, required: false }]

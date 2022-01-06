@@ -1,6 +1,7 @@
 const { array } = require('../config/multer');
 const Club = require('../modules/clubsModule')
 const Cour = require('../modules/cours')
+const Forfait = require('../modules/forfaitModule')
 
 exports.createClub = (req, res, next) => {
     delete req.body._id;
@@ -45,7 +46,7 @@ exports.deleteClub = (req, res, next) => {
 };
 exports.getOneClub = async (req, res, next) => {
     try {
-        const club = await Club.findById(req.params.id).populate("cours");
+        const club = await Club.findById(req.params.id).populate("cours forfaits")
         res.json(club);
     } catch (err) {
         console.log(err);
@@ -90,6 +91,29 @@ exports.cours = async (req, res, next) => {
             .catch(error => res.status(400).json({ error }));
         res.json(cours)
         console.log(cours);
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "internal server err" });
+    }
+}
+
+exports.forfaits = async (req, res, next) => {
+
+    const forfait = await Forfait.create(req.body)
+
+
+    try {
+        const forfaits = await Club.findByIdAndUpdate(
+            req.params.id,
+            { $push: { forfaits: forfait._id } },
+            { new: true }
+
+        )
+            .catch(error => res.status(400).json({ error }));
+        res.json(forfaits)
+        console.log('hello', forfaits);
+        console.log('hi', forfait);
 
     } catch (err) {
         console.log(err);

@@ -1,15 +1,15 @@
 const Cour = require('../modules/cours')
 
-exports.createCours = (req, res, next) => {
-    console.log(req.body);
-    const cour = new Cour({
-        ...req.body
-    });
-    cour.save()
-        .then((result) => res.status(201).json(result))
-        .catch(error => res.status(400).json({ error }));
-    console.log(cour);
-}
+// exports.createCours = (req, res, next) => {
+//     console.log(req.body);
+//     const cour = new Cour({
+//         ...req.body
+//     });
+//     cour.save()
+//         .then((result) => res.status(201).json(result))
+//         .catch(error => res.status(400).json({ error }));
+//     console.log(cour);
+// }
 exports.modifyCour = async (req, res, next) => {
     console.log(req.body);
     const Cours = await Cour.findByIdAndUpdate(req.params.id, req.body, {
