@@ -7,7 +7,8 @@ const courstSchema = mongoose.Schema({
         type: String, required: false,
         enum: ['LUNDI', 'MARDI', 'MERCREDI', 'JEUDI', 'VENDREDI', 'SAMEDI', 'DIMANCHE', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche']
     },
-    heure: { type: String, },
+    heureDebut: { type: String, },
+    heureFin: { type: String, },
 
 }, { versionKey: false, timestamps: true });
 module.exports = mongoose.model('Cours', courstSchema)
