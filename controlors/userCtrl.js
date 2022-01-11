@@ -71,3 +71,27 @@ exports.club = async (req, res, next) => {
     }
 };
 
+
+exports.modifUser = (req, res, next) => {
+    user = User.findOne({ _id: req.params.id })
+        .then(users => res.status(200).json(users))
+        .catch(error => res.status(404).json({ error })
+        );
+    if (req.body.dateInscription) {
+        user.dateInscription = req.body.dateInscription
+    }
+    User.updateOne({ _id: req.params.id }, user).then(
+        () => {
+            res.status(201).json({
+                message: 'Date Inscription updated !',
+                user: user
+            });
+        }
+    ).catch(
+        (error) => {
+            res.status(400).json({
+                error: error
+            });
+        }
+    );
+}

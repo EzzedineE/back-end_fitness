@@ -9,5 +9,6 @@ router.get('/:id', user.getOneUser);
 router.post('/:id', user.like)
 router.post('/delete/:id', user.dislike)
 router.post('/abonnement/:id', user.club)
+router.put('/update/:id', user.modifUser)
 
 module.exports = router
